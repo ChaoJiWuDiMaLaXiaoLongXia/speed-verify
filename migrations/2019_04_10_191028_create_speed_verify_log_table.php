@@ -19,6 +19,7 @@ class CreateSpeedVerifyLogTable extends Migration
         Schema::create('speed_verify_log', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->enum('verify_mode', ['phone','email'])->comment('账户类型(phone:短信验证码,email:邮箱验证码)');
+            $table->string('drive', 32)->comment('发送驱动通道');
             $table->string('verify_to', 64)->comment('接收短信的手机号码 OR 接收短信的邮箱地址');
             $table->string('verify_template', 32)->default('public')->comment('验证码使用场景(示例: public=默认,register=注册,login=登录,update=更新,reset-pwd=重置密码,forgot-pwd=找回密码...）');
             $table->string('verify_code', 32)->comment('验证码(经MD5加密的密文)');

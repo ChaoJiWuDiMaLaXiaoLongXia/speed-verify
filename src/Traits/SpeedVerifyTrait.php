@@ -188,6 +188,7 @@ trait SpeedVerifyTrait
         //记录验证数据
         $insertGetId = DB::table('speed_verify_log')->insertGetId([
             'verify_mode'     => $this->mode,
+            'drive'           => $this->drive,
             'verify_to'       => $verify_to,
             'verify_template' => $this->template,
             'verify_code'     => self::encryptionCode($verify_to, $this->template, $this->verify_code),
