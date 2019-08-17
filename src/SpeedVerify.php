@@ -272,8 +272,11 @@ final class SpeedVerify
      */
     public function verifyCode(string $to = null, $verify_code = null)
     {
+        if(!self::config()['code_verify'])
+            return self::output(30000, '校验功能未启用');
+
         //清除已过期的验证码
-        DB::table('speed_verify_log')->where('expire_time', '<', time())->delete();
+        $this->clear_expired_logs();
         if(!empty($to)) {
             if(filter_var($to,FILTER_VALIDATE_EMAIL)) {
                 $this->to_email = $to;
@@ -466,6 +469,4 @@ final class SpeedVerify
         }
         return true;
     }
-
-
 }

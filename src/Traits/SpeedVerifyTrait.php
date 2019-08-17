@@ -246,4 +246,12 @@ trait SpeedVerifyTrait
                 'update_time' => time(),
             ]);
     }
+
+    /**
+     * 清除已过期的验证码
+     * @return int
+     */
+    protected function clear_expired_logs() {
+        return DB::table('speed_verify_log')->where('expire_time', '<', time())->delete();
+    }
 }
