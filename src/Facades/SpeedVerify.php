@@ -27,6 +27,6 @@ class SpeedVerify extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'SpeedVerifys';
+        return 'SpeedVerify';
     }
 }

@@ -26,7 +26,12 @@ final class SpeedVerifyServiceProvider extends ServiceProvider
                 realpath(__DIR__.'/../config/speed-verify.php') => config_path('speed-verify.php'),
             ]);
         }
-        $this->app['SpeedVerifys']->register();
+        if (function_exists('database_path')) {
+            $this->publishes([
+                realpath(__DIR__.'/../migrations/2019_04_10_191028_create_speed_verify_log_table.php') => database_path
+                ('migrations/2019_04_10_191028_create_speed_verify_log_table.php'),
+            ]);
+        }
     }
 
     /**
@@ -36,18 +41,8 @@ final class SpeedVerifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('SpeedVerifys', function () {
+        $this->app->singleton('SpeedVerify', function () {
             return new SpeedVerify();
         });
-    }
-
-    /**
-     * Get the services provided by the package.
-     *
-     * @return array
-     */
-    public function provides()
-    {
-        return ['SpeedVerifys'];
     }
 }
