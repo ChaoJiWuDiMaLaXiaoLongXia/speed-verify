@@ -1,0 +1,49 @@
+{
+  "name": "chaojiwudimalaxiaolongxia/speed-verify",
+  "description": "极速验证码Laravel5.8+插件。支持短信验证码、邮件验证码、短信通知、邮件通知发送。",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "超级无敌麻辣小龙虾",
+      "email": "chaojiwudimalaxiaolongxia@gmail.com",
+      "homepage": "https://github.com/chaojiwudimalaxiaolongxia/"
+    }
+  ],
+  "require": {
+    "php": "^7.1.3",
+    "ext-json": "*",
+    "predis/predis": "^1.1",
+    "guzzlehttp/guzzle": "^6.3",
+    "swiftmailer/swiftmailer": "^6.0",
+    "alibabacloud/client": "^1.5",
+    "qcloudsms/qcloudsms_php": "0.1.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5",
+    "fideloper/proxy": "~4.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ChaoJiWuDiMaLaXiaoLongXia\\SpeedVerify\\Tests\\": "tests/"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "ChaoJiWuDiMaLaXiaoLongXia\\SpeedVerify\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "ChaoJiWuDiMaLaXiaoLongXia\\SpeedVerify\\SpeedVerifyServiceProvider"
+      ],
+      "aliases": {
+        "SpeedVerify": "ChaoJiWuDiMaLaXiaoLongXia\\SpeedVerify\\Facades\\SpeedVerify"
+      }
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
