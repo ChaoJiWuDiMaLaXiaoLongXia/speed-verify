@@ -238,6 +238,7 @@ final class SpeedVerify
         if(empty($this->verify_code)) {
             $this->verify_code  = self::simpleRandString($this->code_length, $this->code_type);
         }
+        $drive = $this->getDrive();
         if($this->code_verify) {
             try{
                 //记录验证数据
@@ -251,13 +252,13 @@ final class SpeedVerify
             }
         }
 
-        $response = $this->getDrive()::send();
+        $response = $drive::send();
         if(10000 === $response['status'])
         {
             //发送成功
             $this->lockVerify('update');
             if($this->code_verify) {
-                $this->send_is_sent($insertGetId);
+                $this->send_is_sent($insertGetId, 1, $response);
             }
         }
 

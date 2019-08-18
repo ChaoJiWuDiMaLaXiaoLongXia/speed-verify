@@ -37,6 +37,7 @@ php artisan migrate
 ## 使用示例:
 - 1.1、快速发送注册验证码示例:
 ```
+use ChaoJiWuDiMaLaXiaoLongXia\SpeedVerify\SpeedVerify;
 //发送短信
 try {
     $response = (new SpeedVerify())->autoDrive('register')->send('13800138000', '123456');
@@ -98,6 +99,7 @@ Array
 
 - 1.2、校验验证码示例:
 ```
+use ChaoJiWuDiMaLaXiaoLongXia\SpeedVerify\SpeedVerify;
 try {
     $response = (new SpeedVerify())->setTemplate('register')->verifyCode('13800138000', '123456');
     print_r($response);
@@ -143,6 +145,7 @@ Array
 
 - 2.1、发送设备场景验证码：
 ```
+use ChaoJiWuDiMaLaXiaoLongXia\SpeedVerify\SpeedVerify;
 try {
     $sms = new SpeedVerify();
     $sms->setDrive('AliYunSMS');
@@ -197,6 +200,7 @@ Array
 
 - 2.2、校验设备场景验证码示例:
 ```
+use ChaoJiWuDiMaLaXiaoLongXia\SpeedVerify\SpeedVerify;
 try {
     $response = (new SpeedVerify())->setTemplate('scenario')->verifyCode('13800138000', ['code' => 123456', 'equipment' => 'NO0123456']);
     print_r($response);

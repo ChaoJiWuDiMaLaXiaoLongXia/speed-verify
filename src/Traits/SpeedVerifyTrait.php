@@ -207,13 +207,15 @@ trait SpeedVerifyTrait
      * @param $insertGetId
      * @return int
      */
-    protected function send_is_sent($insertGetId)
+    protected function send_is_sent($insertGetId, $is_sent, $response)
     {
         return DB::table('speed_verify_log')
             ->where('id', $insertGetId)
             ->update([
-                'is_sent'     => 1,
+                'is_sent'     => $is_sent,
+                'result'      => $response['response'] ?? '',
                 'update_time' => time(),
+
             ]);
     }
 
